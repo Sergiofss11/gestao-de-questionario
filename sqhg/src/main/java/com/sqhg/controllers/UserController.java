@@ -1,14 +1,15 @@
 package com.sqhg.controllers;
 
-import com.sqhg.entities.User;
-import com.sqhg.repositories.UserRepository;
 import java.util.List;
+import com.sqhg.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.sqhg.entities.User;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -29,7 +30,7 @@ public class UserController {
      */
     @GetMapping(value = "/{id}")
     public User findById(@PathVariable Long id) {
-        final List<User> result = (List<User>) repository.findById(id).get();
+        User result = repository.findById(id).get();
         return (User) result;
     }
 }
